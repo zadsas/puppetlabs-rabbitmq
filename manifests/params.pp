@@ -3,7 +3,7 @@
 #   The RabbitMQ Module configuration settings.
 #
 class rabbitmq::params {
-
+  puts "OSFAMILY: $::osfamily"
   case $::osfamily {
     'Archlinux': {
       $package_ensure   = 'installed'
