@@ -3,7 +3,7 @@
 #   The RabbitMQ Module configuration settings.
 #
 class rabbitmq::params {
-  puts "OSFAMILY: $::osfamily"
+
   case $::osfamily {
     'Archlinux': {
       $package_ensure   = 'installed'
@@ -15,6 +15,14 @@ class rabbitmq::params {
       # This must remain at the end as we need $base_version and $version defined first
     }
     'Debian': {
+      $package_ensure   = 'installed'
+      $package_name     = 'rabbitmq-server'
+      $service_name     = 'rabbitmq-server'
+      $package_provider = 'apt'
+      $package_source   = ''
+      $version          = '3.1.5'
+    }
+    '': {
       $package_ensure   = 'installed'
       $package_name     = 'rabbitmq-server'
       $service_name     = 'rabbitmq-server'
